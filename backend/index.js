@@ -24,12 +24,13 @@ app.use('/transaction', transactionRoute);
 
 // User
 const {addUser, getUser} = require("./controller/userController");
-app.post("/adduser", addUser);
-app.get("/getuser", getUser);
-
+app.post("/adduser", addUser)
+app.get("/getuser", getUser)
 // Transaction
-const {getTransaction} = require("./controller/transactionController");
-app.get("/gettransaction", getTransaction);
+const {addTransaction, getTransaction} = require("./controller/transactionController");
+app.post("/addtransaction", addTransaction)
+app.get("/gettransaction", getTransaction)
+
 
 mongoose
   .connect(URL, {
