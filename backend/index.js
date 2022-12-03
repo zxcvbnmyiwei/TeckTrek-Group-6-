@@ -6,17 +6,23 @@ const bodyParser = require('body-parser');
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 
-// Routes
-const userRoute = require("./routes/userRoute")
-
 const app = express();
 
-app.use('/user', userRoute)
 app.use(express.json({limit: "30mb", extended: true})); // replace bodyParser
 app.use(express.urlencoded({limit: "30mb", extended: true})); // replace bodyParser
 app.use(cors());
 
-const URL = "mongodb+srv://cyiwei1998:cyiwei1998@prepcluster.jmznftw.mongodb.net/?retryWrites=true&w=majority"
+
+const URL = "mongodb+srv://dbstechtrek:dbstechtrek@cluster0.axjcazv.mongodb.net/?retryWrites=true&w=majority"
+
+// Routes
+const userRoute = require("./routes/userRoute")
+
+app.use('/user', userRoute)
+// User
+const {addUser, getUser} = require("./controller/userController");
+app.post("/adduser", addUser)
+app.get("/getuser", getUser)
 
 mongoose
   .connect(URL, {
