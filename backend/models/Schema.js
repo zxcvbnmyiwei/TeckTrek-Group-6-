@@ -19,6 +19,7 @@ const bankSchema = mongoose.Schema({
     AccountType: String,
     AccountBalance: Number,
 })
+
 const Bank = mongoose.model("Bank", bankSchema)
 
 

@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const {User} = require('../models/Schema')
+const {User, Bank} = require('../models/Schema')
 
 const addUser = async (req,res) => {
     try {
@@ -42,7 +42,19 @@ const getSelectedUser = async (req,res) => {
     }
 }
 
+const getBankDetails = async (req,res) => {
+    try {
+        const userid = req.params.id
+        const data = await Bank.find({"UserID": userid})
+        console.log(data)
+        return res.status(201).json({success: true, data});
+    }
+    catch (err) {
+        return res.status(500).json({success: false, error: err});
+    }
+}
 
 
 
-module.exports = { addUser, getUser , getSelectedUser}
+
+module.exports = { addUser, getUser , getSelectedUser, getBankDetails}

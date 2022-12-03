@@ -20,17 +20,17 @@ const userRoute = require("./routes/userRoute");
 const transactionRoute = require("./routes/transactionRoute");
 
 app.use('/user', userRoute);
-app.use('/transaction', transactionRoute);
-
 // User
-const {addUser, getUser} = require("./controller/userController");
+const {addUser, getUser, getBankDetails} = require("./controller/userController");
 app.post("/adduser", addUser)
 app.get("/getuser", getUser)
 // Transaction
-const {addTransaction, getTransaction} = require("./controller/transactionController");
+const {addTransaction, getTransaction, getTransactionbyID, deleteTransactionbyId} = require("./controller/transactionController");
 app.post("/addtransaction", addTransaction)
 app.get("/gettransaction", getTransaction)
-
+app.get("/bank/:id", getBankDetails)
+app.get("/transaction/:id", getTransactionbyID)
+app.delete("/transactionid/:id", deleteTransactionbyId)
 
 mongoose
   .connect(URL, {
