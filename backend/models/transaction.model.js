@@ -9,8 +9,6 @@ const transactionSchema = new Schema({
     Date: Date,
     TransactionAmount: Number,
     Comment: String,
-}, {
-    timestamps: true,
 });
 
 const Transaction = mongoose.model("Transaction", transactionSchema);
