@@ -30,7 +30,7 @@ const {addTransaction, getTransaction, getTransactionbyID, deleteTransaction} = 
 app.post("/addtransaction", addTransaction)
 app.get("/gettransaction", getTransaction)
 app.get("/bank/:id", getBankDetails)
-//app.get("/transaction/:id", getTransactionbyID)
+app.get("/transaction/:id", getTransactionbyID)
 app.delete("/deleteTransaction/:TransactionID", deleteTransaction)
 
 mongoose
