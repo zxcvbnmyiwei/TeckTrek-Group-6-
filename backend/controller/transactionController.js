@@ -5,8 +5,8 @@ const addTransaction = async (req,res) => {
     try {
         const numID = await Transaction.find().count() + 1;
         req.body.TransactionID = numID
-        const {TransactionID,ReceivingAccountID,Date,TransactionAmount,Comment} = req.body;
-        const transaction = await new Transaction({TransactionID,ReceivingAccountID,Date,TransactionAmount,Comment}).save();
+        const {TransactionID,AccountID,ReceivingAccountID,Date,TransactionAmount,Comment} = req.body;
+        const transaction = await new Transaction({TransactionID,AccountID,ReceivingAccountID,Date,TransactionAmount,Comment}).save();
         return res.status(201).json({success: true, transaction});
     
     }
