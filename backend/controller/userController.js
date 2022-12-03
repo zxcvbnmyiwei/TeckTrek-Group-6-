@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const {User, Bank} = require('../models/Schema')
 
+
 const addUser = async (req,res) => {
     try {
         const {username,password,Firstname,email} = req.body;

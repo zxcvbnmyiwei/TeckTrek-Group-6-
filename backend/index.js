@@ -16,6 +16,7 @@ app.use(cors());
 const URL = "mongodb+srv://dbstechtrek:dbstechtrek@cluster0.axjcazv.mongodb.net/?retryWrites=true&w=majority"
 
 // Routes
+
 const userRoute = require("./routes/userRoute");
 const transactionRoute = require("./routes/transactionRoute");
 
@@ -30,7 +31,7 @@ app.post("/addtransaction", addTransaction)
 app.get("/gettransaction", getTransaction)
 app.get("/bank/:id", getBankDetails)
 app.get("/transaction/:id", getTransactionbyID)
-app.delete("/transactionid/:id", deleteTransactionbyId)
+app.delete("/deleteTransaction/:TransactionID", deleteTransaction)
 
 mongoose
   .connect(URL, {

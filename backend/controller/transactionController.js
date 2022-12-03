@@ -54,5 +54,27 @@ const deleteTransactionbyId = async (req,res) => {
 
 
 
+/* DELETE TRANSACTIONS */
+const deleteTransaction = async (req,res) => {
+    try {
+        const {TransactionID} = req.params;
+        const data = await Transaction.deleteOne({TransactionID})
 
-module.exports = { addTransaction, getTransaction, getTransactionbyID, deleteTransactionbyId}
+        // console.log(transID)
+        // console.log(data)
+        return res.status(201).json({success: true, data});
+        
+    }
+
+    catch (err) {
+        return res.status(500).json({success: false, error: err});
+    }
+}
+
+
+module.exports = { getTransaction, deleteTransaction }
+
+
+
+module.exports = { addTransaction, getTransaction, getTransactionbyID, deleteTransactionbyId, deleteTransaction}
+
