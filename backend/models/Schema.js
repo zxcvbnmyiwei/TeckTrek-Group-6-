@@ -13,4 +13,13 @@ const userSchema = mongoose.Schema({
 })
 const User = mongoose.model("User", userSchema)
 
-module.exports = {User}
+const bankSchema = mongoose.Schema({
+    AccountID: Number,
+    UserID: Number,
+    AccountType: String,
+    AccountBalance: Number,
+})
+const Bank = mongoose.model("Bank", bankSchema)
+
+
+module.exports = {User,Bank}
