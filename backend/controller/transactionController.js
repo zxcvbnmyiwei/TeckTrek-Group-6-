@@ -3,10 +3,10 @@ const {Transaction} = require('../models/transaction.model')
 
 const addTransaction = async (req,res) => {
     try {
-        const {receivingid,date,transactionamt,comment} = req.body;
-        const transaction = await new Transaction({receivingid,date,transactionamt,comment}).save();
+        const {ReceivingAccountID,Date,TransactionAmount,Comment} = req.body;
+        const transaction = await new Transaction({ReceivingAccountID,Date,TransactionAmount,Comment}).save();
 
-        return res.status(201).json({success: true, user});
+        return res.status(201).json({success: true, transaction});
     
     }
 
