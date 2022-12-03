@@ -1,5 +1,5 @@
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 const {User} = require('../models/Schema')
 
 const addUser = async (req,res) => {

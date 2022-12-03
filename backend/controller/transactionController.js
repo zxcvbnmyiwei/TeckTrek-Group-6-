@@ -29,8 +29,10 @@ const getTransaction = async (req,res) => {
 /* DELETE TRANSACTIONS */
 const deleteTransaction = async (req,res) => {
     try {
-        const data = await Transaction.find()
+        const {TransactionID} = req.params;
+        const data = await Transaction.deleteOne({TransactionID})
 
+        // console.log(transID)
         // console.log(data)
         return res.status(201).json({success: true, data});
         

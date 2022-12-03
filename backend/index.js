@@ -22,10 +22,11 @@ const transactionRoute = require("./routes/transactionRoute")
 app.use('/user', userRoute, transactionRoute)
 // User
 const {addUser, getUser} = require("./controller/userController");
-const { getTransaction } = require("./controller/transactionController");
+const { getTransaction, deleteTransaction } = require("./controller/transactionController");
 app.post("/adduser", addUser)
 app.get("/getuser", getUser)
 app.get("/getTransaction", getTransaction)
+app.delete("/deleteTransaction/:TransactionID", deleteTransaction)
 
 mongoose
   .connect(URL, {
