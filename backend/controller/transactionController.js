@@ -41,16 +41,16 @@ const getTransactionbyID = async (req,res) => {
     }
 }
 
-const deleteTransactionbyId = async (req,res) => {
-    try {
-        const transactionId = req.params.id;
-        Transaction.deleteOne({ "TransactionID" :  transactionId}) 
-        return res.status(201).json({success: true });
-    }
-    catch (err) {
-        return res.status(500).json({success: false, error: err});
-    }
-}
+// const deleteTransactionbyId = async (req,res) => {
+//     try {
+//         const transactionId = req.params.id;
+//         Transaction.deleteOne({ "TransactionID" :  transactionId}) 
+//         return res.status(201).json({success: true });
+//     }
+//     catch (err) {
+//         return res.status(500).json({success: false, error: err});
+//     }
+// }
 
 
 
@@ -72,9 +72,7 @@ const deleteTransaction = async (req,res) => {
 }
 
 
-module.exports = { getTransaction, deleteTransaction }
+// module.exports = { getTransaction, deleteTransaction }
 
-
-
-module.exports = { addTransaction, getTransaction, getTransactionbyID, deleteTransactionbyId, deleteTransaction}
+module.exports = { addTransaction, getTransaction, getTransactionbyID, deleteTransaction}
 

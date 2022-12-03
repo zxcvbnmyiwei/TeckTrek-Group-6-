@@ -26,11 +26,11 @@ const {addUser, getUser, getBankDetails} = require("./controller/userController"
 app.post("/adduser", addUser)
 app.get("/getuser", getUser)
 // Transaction
-const {addTransaction, getTransaction, getTransactionbyID, deleteTransactionbyId} = require("./controller/transactionController");
+const {addTransaction, getTransaction, getTransactionbyID, deleteTransaction} = require("./controller/transactionController");
 app.post("/addtransaction", addTransaction)
 app.get("/gettransaction", getTransaction)
 app.get("/bank/:id", getBankDetails)
-app.get("/transaction/:id", getTransactionbyID)
+//app.get("/transaction/:id", getTransactionbyID)
 app.delete("/deleteTransaction/:TransactionID", deleteTransaction)
 
 mongoose
