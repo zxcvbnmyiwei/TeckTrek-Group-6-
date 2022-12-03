@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const {Transaction} = require('../models/Schema')
+const {Transaction} = require('../models/transaction.model')
 
 // const addTransaction = async (req,res) => {
 //     try {
