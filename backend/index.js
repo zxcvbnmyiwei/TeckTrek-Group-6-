@@ -2,7 +2,7 @@ require("dotenv").config()
 
 const express = require("express")
 const cors = require("cors")
-const bodyParser = require('body-parser');
+// const bodyParser = require('body-parser');
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 
@@ -16,16 +16,21 @@ app.use(cors());
 const URL = "mongodb+srv://dbstechtrek:dbstechtrek@cluster0.axjcazv.mongodb.net/?retryWrites=true&w=majority"
 
 // Routes
-const userRoute = require("./routes/userRoute")
-const transactionRoute = require("./routes/transactionRoute")
 
-app.use('/user', userRoute, transactionRoute)
+const userRoute = require("./routes/userRoute");
+const transactionRoute = require("./routes/transactionRoute");
+
+app.use('/user', userRoute);
 // User
-const {addUser, getUser} = require("./controller/userController");
-const { getTransaction, deleteTransaction } = require("./controller/transactionController");
+const {addUser, getUser, getBankDetails} = require("./controller/userController");
 app.post("/adduser", addUser)
 app.get("/getuser", getUser)
-app.get("/getTransaction", getTransaction)
+// Transaction
+const {addTransaction, getTransaction, getTransactionbyID, deleteTransactionbyId} = require("./controller/transactionController");
+app.post("/addtransaction", addTransaction)
+app.get("/gettransaction", getTransaction)
+app.get("/bank/:id", getBankDetails)
+app.get("/transaction/:id", getTransactionbyID)
 app.delete("/deleteTransaction/:TransactionID", deleteTransaction)
 
 mongoose
@@ -33,8 +38,8 @@ mongoose
     useNewUrlParser: true
   })
   .then(() => {
-    app.listen(5000, () => {
-      console.log("Server has started at port 5000");
+    app.listen(5001, () => {
+      console.log("Server has started at port 5001");
     });
   })
   .catch((error) => {

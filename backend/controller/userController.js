@@ -1,6 +1,7 @@
 
-const mongoose = require('mongoose')
-const {User} = require('../models/Schema')
+const mongoose = require('mongoose');
+const {User, Bank} = require('../models/Schema')
+
 
 const addUser = async (req,res) => {
     try {
@@ -19,7 +20,6 @@ const addUser = async (req,res) => {
 const getUser = async (req,res) => {
     try {
         const data = await User.find()
-        // console.log(data)
         return res.status(201).json({success: true, data});
         
     }
@@ -30,5 +30,32 @@ const getUser = async (req,res) => {
 }
 
 
+const getSelectedUser = async (req,res) => {
+    try {
+        const username = req.params.username
+        const data = await User.find({"Username":username})
+        return res.status(201).json({success: true, "UserID": data[0].UserID});
+        
+    }
 
-module.exports = { addUser, getUser }
+    catch (err) {
+        return res.status(500).json({success: false, error: err});
+    }
+}
+
+const getBankDetails = async (req,res) => {
+    try {
+        const userid = req.params.id
+        const data = await Bank.find({"UserID": userid})
+        console.log(data)
+        return res.status(201).json({success: true, data});
+    }
+    catch (err) {
+        return res.status(500).json({success: false, error: err});
+    }
+}
+
+
+
+
+module.exports = { addUser, getUser , getSelectedUser, getBankDetails}

@@ -2,17 +2,25 @@ require("dotenv").config()
 
 const express = require("express")
 const cors = require("cors")
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const jwt = require("jsonwebtoken")
 const mongoose = require("mongoose")
 
 // Routes
+
+
+//User
 const userRoute = require("./routes/userRoute");
 const { User } = require("./models/Schema");
+
+//Transaction
+// const transactionRoute = require("./routes/transactionRoute");
+// const { Transaction } = require("./models/transaction.model");
 
 const app = express();
 
 app.use('/user', userRoute)
+// app.use('/transactions', transactionRoute)
 app.use(express.json({limit: "30mb", extended: true})); // replace bodyParser
 app.use(express.urlencoded({limit: "30mb", extended: true})); // replace bodyParser
 app.use(cors());
