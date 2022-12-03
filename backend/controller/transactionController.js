@@ -26,5 +26,22 @@ const getTransaction = async (req,res) => {
 }
 
 
+/* DELETE TRANSACTIONS */
+const deleteTransaction = async (req,res) => {
+    try {
+        const data = await Transaction.find()
 
-module.exports = { getTransaction }
+        // console.log(data)
+        return res.status(201).json({success: true, data});
+        
+    }
+
+    catch (err) {
+        return res.status(500).json({success: false, error: err});
+    }
+}
+
+
+module.exports = { getTransaction, deleteTransaction }
+
+

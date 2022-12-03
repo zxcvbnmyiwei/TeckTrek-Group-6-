@@ -17,12 +17,15 @@ const URL = "mongodb+srv://dbstechtrek:dbstechtrek@cluster0.axjcazv.mongodb.net/
 
 // Routes
 const userRoute = require("./routes/userRoute")
+const transactionRoute = require("./routes/transactionRoute")
 
-app.use('/user', userRoute)
+app.use('/user', userRoute, transactionRoute)
 // User
 const {addUser, getUser} = require("./controller/userController");
+const { getTransaction } = require("./controller/transactionController");
 app.post("/adduser", addUser)
 app.get("/getuser", getUser)
+app.get("/getTransaction", getTransaction)
 
 mongoose
   .connect(URL, {
