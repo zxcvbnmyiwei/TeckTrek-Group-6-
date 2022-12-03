@@ -18,6 +18,8 @@ app.use(express.urlencoded({limit: "30mb", extended: true})); // replace bodyPar
 app.use(cors());
 
 const userDB = [{username : "Kyle", password : "Kyle"}]
+const { getUser } = require("./controller/userController")
+
 
 const URL = "mongodb+srv://dbstechtrek:dbstechtrek@cluster0.axjcazv.mongodb.net/?retryWrites=true&w=majority"
 
@@ -36,11 +38,11 @@ mongoose
 
 app.post("/login" , userLogin)
 
-function userLogin(req,res) {
+async function userLogin(req,res) {
     const username = req.body.username
     const password = req.body.password
-    const selectedUser = userDB.find(item => item.username === username)
-    if (selectedUser && selectedUser.password === password)  {
+    const selectedUser = await User.find({"Username":username})
+    if (selectedUser && selectedUser[0].Password == password)  {
       console.log("Generating Token....")
       const user = {name : username}
       const accessToken = generateAccessToken(user)

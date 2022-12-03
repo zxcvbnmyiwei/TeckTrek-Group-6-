@@ -19,7 +19,7 @@ const addUser = async (req,res) => {
 const getUser = async (req,res) => {
     try {
         const data = await User.find()
-        console.log(data)
+        // console.log(data)
         return res.status(201).json({success: true, data});
         
     }
